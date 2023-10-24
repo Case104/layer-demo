@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Layer",
     "version": "1.0",
-    "permissions": ["activeTab"],
+    "permissions": ["activeTab", "scripting"],
     "action": {
         "default_icon": {
             "16": "images/icon16.png",
@@ -12,7 +12,7 @@
             }
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "service-worker.js"
     },
     "icons": {
         "16": "images/icon16.png",
@@ -21,20 +21,21 @@
         "128": "images/icon128.png"
     },
     "commands": {
-        "_execute_action": {
+        "open-layer-prompt": {
             "suggested_key": {
-                "default": "Ctrl+Shift+Space",
-                "mac": "MacCtrl+Shift+Space"
+                "default": "Ctrl+Shift+Y",
+                "mac": "MacCtrl+Shift+Y"
             },
-            "description": "Open the Layer popup"
+            "description": "Open Layer Prompt"
         }
     },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "css": ["content.css"],
+            "css": ["styles.css"],
             "js": ["content.js"],
             "run_at": "document_end"
         }
-    ]
+    ],
+    "minimum_chrome_version": "102"
 }
