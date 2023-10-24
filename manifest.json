@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Layer",
+    "version": "1.0",
+    "permissions": ["activeTab"],
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "32": "images/icon32.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+            }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "32": "images/icon32.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Space",
+                "mac": "MacCtrl+Shift+Space"
+            },
+            "description": "Open the Layer popup"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "css": ["content.css"],
+            "js": ["content.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
